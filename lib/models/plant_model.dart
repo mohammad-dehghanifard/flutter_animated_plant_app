@@ -21,4 +21,7 @@ final List<PlantModel> plants = [
   PlantModel(title: "گل های گلدانی", size: "گلدان کوچک", imagePath: "assets/images/plant2.png", crust: "معمولی", delivery: "6 ساعت", price: 80000, relatedImagePath: [
     "assets/images/plant1.png","assets/images/plant2.png","assets/images/plant4.png"
   ]),
+  PlantModel(title: "گل های گلدانی کوچک", size: "گلدان کوچک", imagePath: "assets/images/plant3.png", crust: "معمولی", delivery: "1 روز کاری", price: 125000, relatedImagePath: [
+    "assets/images/plant1.png","assets/images/plant2.png","assets/images/plant4.png"
+  ]),
 ];
