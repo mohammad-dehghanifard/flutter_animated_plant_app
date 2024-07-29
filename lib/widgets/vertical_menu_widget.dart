@@ -6,21 +6,42 @@ import 'package:flutter/material.dart';
 
 import 'indicator_widget.dart';
 
-class VerticalMenuWidget extends StatelessWidget {
+class VerticalMenuWidget extends StatefulWidget {
   const VerticalMenuWidget({super.key});
+
+  @override
+  State<VerticalMenuWidget> createState() => _VerticalMenuWidgetState();
+}
+
+class _VerticalMenuWidgetState extends State<VerticalMenuWidget> with SingleTickerProviderStateMixin {
+  int currentIndex = 0;
+  late AnimationController animationController;
+  late Animation animation;
+
+  @override
+  void initState() {
+    animationController = AnimationController(vsync: this,duration: const Duration(milliseconds: 450));
+    animation = Tween<double>(begin: 200,end: 200).animate(animationController);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.sizeOf(context);
-    return Stack(
-      children: [
-        buildBodyWidget(size),
-        // selector
-        const Positioned(
-          top: 200,
-            right: 0,
-            child: SelectorWidget())
-      ],
+    return AnimatedBuilder(
+      animation: animationController,
+      builder: (BuildContext context, Widget? child) {
+        return Stack(
+          children: [
+            buildBodyWidget(size),
+            // selector
+             Positioned(
+                top: animation.value,
+                right: 0,
+                child: const SelectorWidget())
+          ],
+        );
+      },
     );
   }
 
@@ -45,9 +66,9 @@ class VerticalMenuWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold),)),
           ),
           // tags
-          const TagWidget(text: "جدیدترین"),
-          const TagWidget(text: "محبوبترین"),
-          const TagWidget(text: "پیشنهادی برای شما"),
+          TagWidget(text: "جدیدترین",onTap: () => changeCategory(0)),
+          TagWidget(text: "محبوبترین",onTap: () => changeCategory(1)),
+          TagWidget(text: "پیشنهادی برای شما",onTap: () => changeCategory(2)),
           const SizedBox(height: 50),
           const ShoppingCartWidget(),
           const Spacer(),
@@ -56,5 +77,13 @@ class VerticalMenuWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void changeCategory(int index) {
+    setState(() {
+      animation = Tween<double>(begin: 200 + (currentIndex * 130),end: 200 + (index * 130) ).animate(animationController);
+      currentIndex = index;
+      animationController.forward(from: 0);
+    });
   }
 }
