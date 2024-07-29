@@ -3,6 +3,8 @@ import 'package:animated_plant_app/widgets/shopping_cart_widget.dart';
 import 'package:animated_plant_app/widgets/tag_widget.dart';
 import 'package:flutter/material.dart';
 
+import 'indicator_widget.dart';
+
 class VerticalMenuWidget extends StatelessWidget {
   const VerticalMenuWidget({super.key});
 
@@ -41,7 +43,9 @@ class VerticalMenuWidget extends StatelessWidget {
           const TagWidget(text: "محبوبترین"),
           const TagWidget(text: "پیشنهادی برای شما"),
           const SizedBox(height: 50),
-          ShoppingCartWidget()
+          const ShoppingCartWidget(),
+          const Spacer(),
+          const IndicatorWidget()
           // card item
         ],
       ),
