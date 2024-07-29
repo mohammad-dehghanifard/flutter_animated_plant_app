@@ -1,4 +1,5 @@
 import 'package:animated_plant_app/constants/app_colors.dart';
+import 'package:animated_plant_app/widgets/selector_widget.dart';
 import 'package:animated_plant_app/widgets/shopping_cart_widget.dart';
 import 'package:animated_plant_app/widgets/tag_widget.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,11 @@ class VerticalMenuWidget extends StatelessWidget {
     return Stack(
       children: [
         buildBodyWidget(size),
+        // selector
+        const Positioned(
+          top: 200,
+            right: 0,
+            child: SelectorWidget())
       ],
     );
   }
