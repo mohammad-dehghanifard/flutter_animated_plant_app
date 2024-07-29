@@ -1,4 +1,5 @@
 import 'package:animated_plant_app/constants/app_colors.dart';
+import 'package:animated_plant_app/widgets/shopping_cart_widget.dart';
 import 'package:animated_plant_app/widgets/tag_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -39,6 +40,9 @@ class VerticalMenuWidget extends StatelessWidget {
           const TagWidget(text: "جدیدترین"),
           const TagWidget(text: "محبوبترین"),
           const TagWidget(text: "پیشنهادی برای شما"),
+          const SizedBox(height: 50),
+          ShoppingCartWidget()
+          // card item
         ],
       ),
     );
