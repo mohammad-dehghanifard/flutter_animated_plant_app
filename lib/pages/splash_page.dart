@@ -1,4 +1,5 @@
 import 'package:animated_plant_app/constants/app_colors.dart';
+import 'package:animated_plant_app/pages/auth_page.dart';
 import 'package:animated_plant_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     animationController.forward();
 
     Future.delayed(const Duration(seconds: 3)).then((value) {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage(),));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AuthPage(),));
     },);
     super.initState();
   }
